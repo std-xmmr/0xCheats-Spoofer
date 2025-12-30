@@ -1,19 +1,19 @@
 ### 0xCheats-Spoofer
-Простой hwid спуфер от 0xCheats для игры SCP Secret Laborotory
-Код простой и без лишней хуйни 
-На момент разработки спуфера версия SCP SL была - 14.2.4(28.12.2025)
+РџСЂРѕСЃС‚РѕР№ hwid СЃРїСѓС„РµСЂ РѕС‚ 0xCheats РґР»СЏ РёРіСЂС‹ SCP Secret Laborotory
+РљРѕРґ РїСЂРѕСЃС‚РѕР№ Рё Р±РµР· Р»РёС€РЅРµР№ С…СѓР№РЅРё 
+РќР° РјРѕРјРµРЅС‚ СЂР°Р·СЂР°Р±РѕС‚РєРё СЃРїСѓС„РµСЂР° РІРµСЂСЃРёСЏ SCP SL Р±С‹Р»Р° - 14.2.4(28.12.2025)
 
 # About code
-Интерфейс - MainWindow.xaml
-Основной C# код - MainWindow.xaml.cs
-Тип проекта - Приложение WPF(.NET Framework - 4.8)
+РРЅС‚РµСЂС„РµР№СЃ - MainWindow.xaml
+РћСЃРЅРѕРІРЅРѕР№ C# РєРѕРґ - MainWindow.xaml.cs
+РўРёРї РїСЂРѕРµРєС‚Р° - РџСЂРёР»РѕР¶РµРЅРёРµ WPF(.NET Framework - 4.8)
 
 # How To compile
 1. paste it in developer powershell - 
    dotnet publish -c Release
 2. paste it in developer powershell - 
 dotnet clean dotnet publish -c Release -r win-x64 -p:PublishSingleFile=true
-3. У вас появиться exe в bin\Release\net10.0-windows\win-x64\publish\
+3. РЈ РІР°СЃ РїРѕСЏРІРёС‚СЊСЃСЏ exe РІ bin\Release\net10.0-windows\win-x64\publish\
 
 ### Features
 Processor ID
@@ -31,4 +31,5 @@ Windows Install Date
 ARP Cache Steam Profile Traces
 
 ### Warning
-Для применений изменений которые внес спуфер - нужно перезагрузить компьютер, об этом на прямую пришется в логах ([WARNING] SYSTEM RESTART REQUIRED FOR CHANGES TO TAKE EFFECT!)
+Р”Р»СЏ РїСЂРёРјРµРЅРµРЅРёР№ РёР·РјРµРЅРµРЅРёР№ РєРѕС‚РѕСЂС‹Рµ РІРЅРµСЃ СЃРїСѓС„РµСЂ - РЅСѓР¶РЅРѕ РїРµСЂРµР·Р°РіСЂСѓР·РёС‚СЊ РєРѕРјРїСЊСЋС‚РµСЂ, РѕР± СЌС‚РѕРј РЅР° РїСЂСЏРјСѓСЋ РїСЂРёС€РµС‚СЃСЏ РІ Р»РѕРіР°С… ([WARNING] SYSTEM RESTART REQUIRED FOR CHANGES TO TAKE EFFECT!)
+
