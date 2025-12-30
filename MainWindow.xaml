@@ -1,0 +1,196 @@
+﻿<Window x:Class="_0xSpoofer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="HWID Spoofer" Height="500" Width="800"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        ResizeMode="NoResize" MouseDown="Window_MouseDown" Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <Storyboard x:Key="FadeIn">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.3">
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+
+        <Style x:Key="ModernButton" TargetType="Button">
+            <Setter Property="Background" Value="#1a1a1a"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#333333"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="5">
+                            <Border.RenderTransform>
+                                <ScaleTransform x:Name="scale" ScaleX="1" ScaleY="1"/>
+                            </Border.RenderTransform>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#2a2a2a"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#555555"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#0a0a0a"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border CornerRadius="15">
+        <Border.Background>
+            <SolidColorBrush Color="Black" Opacity="0.85"/>
+        </Border.Background>
+        <Border.Effect>
+            <BlurEffect Radius="0"/>
+        </Border.Effect>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Title Bar -->
+            <Border Grid.Row="0" CornerRadius="15,15,0,0">
+                <Border.Background>
+                    <SolidColorBrush Color="Black" Opacity="0.8"/>
+                </Border.Background>
+                <Grid>
+                    <TextBlock Text="0xSpoofer" 
+                               FontSize="18" 
+                               FontWeight="Bold" 
+                               Foreground="White" 
+                               VerticalAlignment="Center" 
+                               HorizontalAlignment="Center"/>
+                    <Button Content="✕" 
+                            Width="40" 
+                            Height="40" 
+                            HorizontalAlignment="Right" 
+                            Background="Transparent" 
+                            BorderThickness="0" 
+                            Foreground="White" 
+                            FontSize="20" 
+                            Click="CloseButton_Click" 
+                            Cursor="Hand">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="0,15,0,0">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#CC990000"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid>
+            </Border>
+
+            <!-- Main Content -->
+            <Grid Grid.Row="1" Margin="30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Logo -->
+                <TextBlock Grid.Row="0" 
+                           FontFamily="Consolas" 
+                           FontSize="8" 
+                           Foreground="#CCCCCC" 
+                           HorizontalAlignment="Center" 
+                           TextAlignment="Center"
+                           Margin="0,0,0,20">
+                    <Run Text="_______            _____        .__   __  ._____________           .__   "/><LineBreak/>
+                    <Run Text="\   _  \ ___  ___ /     \  __ __|  |_/  |_|__\__    ___/___   ____ |  |  "/><LineBreak/>
+                    <Run Text="/  /_\  \\  \/  //  \ /  \|  |  \  |\   __\  | |    | /  _ \ /  _ \|  |  "/><LineBreak/>
+                    <Run Text="\  \_/   \&gt;    &lt;/    Y    \  |  /  |_|  | |  | |    |(  &lt;_&gt; |  &lt;_&gt; )  |__"/><LineBreak/>
+                    <Run Text=" \_____  /__/\_ \____|__  /____/|____/__| |__| |____| \____/ \____/|____/"/><LineBreak/>
+                    <Run Text="       \/      \/       \/                                     "/>
+                </TextBlock>
+
+                <!-- Status Info -->
+                <Border Grid.Row="1" 
+                        Background="#1a1a1a" 
+                        BorderBrush="#333333" 
+                        BorderThickness="1" 
+                        CornerRadius="10" 
+                        Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="SYSTEM STATUS" 
+                                   FontSize="16" 
+                                   FontWeight="Bold" 
+                                   Foreground="White" 
+                                   Margin="0,0,0,15"/>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="[►]" Foreground="#00FF00" FontFamily="Consolas" Margin="0,0,10,0"/>
+                            <TextBlock x:Name="StatusText" 
+                                       Text="Ready to spoof" 
+                                       Foreground="#CCCCCC" 
+                                       FontFamily="Consolas"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="[►]" Foreground="#00BFFF" FontFamily="Consolas" Margin="0,0,10,0"/>
+                            <TextBlock Text="Driver: Loaded" 
+                                       Foreground="#CCCCCC" 
+                                       FontFamily="Consolas"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="[►]" Foreground="#FFD700" FontFamily="Consolas" Margin="0,0,10,0"/>
+                            <TextBlock Text="Protection: Active" 
+                                       Foreground="#CCCCCC" 
+                                       FontFamily="Consolas"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- Buttons -->
+                <StackPanel Grid.Row="2" 
+                            Orientation="Horizontal" 
+                            HorizontalAlignment="Center" 
+                            Margin="0,30,0,0">
+                    <Button Content="START SPOOFER" 
+                            Style="{StaticResource ModernButton}" 
+                            Width="200" 
+                            Height="50" 
+                            Margin="0,0,20,0" 
+                            Click="SpoofButton_Click"/>
+
+                    <Button Content="CHECK HWID" 
+                            Style="{StaticResource ModernButton}" 
+                            Width="200" 
+                            Height="50" 
+                            Click="CheckButton_Click"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
